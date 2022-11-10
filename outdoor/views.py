@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def home (request):
-	return render(request,'Home.html')
+	return render(request,'index.html')
 
 def contact (request):
 	return render(request,'Contact-Us.html')
@@ -21,21 +21,4 @@ def login (request):
 			redirect('/')
 	return render(request,'Login.html')
 
-def register (request):
-	message=""
-	if request.method == "POST":
-		username = request.POST["name"]
-		email = request.POST["email"]
-		password = request.POST["password"]
-		user = User()
-		user.email = email
-		user.password = password
-		user.username = username
-		person = user.save()
-		#user = authenticate(username=username, password=password)
 
-		return redirect("login")
-		
-	
-	
-	return render(request,'Register.html',{"message":message})

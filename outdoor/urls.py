@@ -15,15 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from places import views as views
+from . import views as viewer
 
-urlpatterns = [
-    path('', views.home,name='home'),
+from django.contrib.auth import views as auth_views
+
+
+urlpatterns = [  
+
+    path('', views.home, name="home"),
     path('contact',views.contact,name="contact"),
-    path('login',views.login,name="login"),
-    path('register',views.register,name="register"),
+
+
+    path('park/', views.park, name='parkview'),
+    
+    
     path('places/',include('places.urls')),
     path('admin/', admin.site.urls),
+    path('register/', views.Signup, name= "register"),
+
+    path('login/', auth_views.LoginView.as_view(template_name='Login.html'),name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'),name='logout'),
+
    
     
 ]
+
+

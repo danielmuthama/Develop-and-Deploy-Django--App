@@ -1,0 +1,32 @@
+  
+  
+
+  
+<h1 style="text-align:centre; padding-left: 380px; padding-bottom: 50px; ">{{category_name.name}} </h1> 
+{% for item in products  %}
+
+
+<div class="flex-container"> 
+  <div class="flex-box"> 
+    
+      <div class="container" >
+        <div class="row">
+          <div class="col-sm" style="padding-bottom: 50px;"> 
+          <a href="{% url 'productview' item.category.slug  item.slug    %} ">
+            <div class="card" style="width: 18rem;">
+              <img src="{{ item.product_image.url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="color: black;">{{ item.name }}</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn  ">{{ item.price }}</a>
+              </div>
+            </div>
+          </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+{% endfor %}
